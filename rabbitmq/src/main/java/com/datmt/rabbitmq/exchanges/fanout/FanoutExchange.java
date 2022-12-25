@@ -1,8 +1,7 @@
 package com.datmt.rabbitmq.exchanges.fanout;
 
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
+import helpers.ConnectionHelper;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -16,13 +15,8 @@ public class FanoutExchange {
     private static final String FANOUT_EXCHANGE_NAME = "datmt-fanout-exchange";
 
     private static void fanoutExchangePublish() throws IOException, TimeoutException {
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
-        factory.setPort(5672);
 
-        // create a connection
-        Connection connection = factory.newConnection();
-
+        var connection = ConnectionHelper.createConnection();
         // create a channel
         Channel channel = connection.createChannel();
 

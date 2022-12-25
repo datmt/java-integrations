@@ -1,8 +1,7 @@
 package com.datmt.rabbitmq.exchanges.topic;
 
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
+import helpers.ConnectionHelper;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -16,14 +15,8 @@ public class TopicExchange {
     }
 
     private static void sendMessageToTopicExchange() throws IOException, TimeoutException {
-        // create a connection factory
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
-        factory.setPort(5672);
 
-        // create a connection
-        Connection connection = factory.newConnection();
-
+        var connection = ConnectionHelper.createConnection();
         // create a channel
         Channel channel = connection.createChannel();
 

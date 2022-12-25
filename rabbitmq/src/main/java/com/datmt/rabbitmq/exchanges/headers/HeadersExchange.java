@@ -2,8 +2,7 @@ package com.datmt.rabbitmq.exchanges.headers;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
+import helpers.ConnectionHelper;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,14 +17,8 @@ public class HeadersExchange {
     }
 
     private static void sendMessageToHeadersExchange() throws IOException, TimeoutException {
-        // create a connection factory
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
-        factory.setPort(5672);
 
-        // create a connection
-        Connection connection = factory.newConnection();
-
+        var connection = ConnectionHelper.createConnection();
         // create a channel
         Channel channel = connection.createChannel();
 
