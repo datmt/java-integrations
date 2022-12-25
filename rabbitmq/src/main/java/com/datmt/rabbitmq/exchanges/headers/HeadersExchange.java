@@ -1,4 +1,4 @@
-package com.datmt.rabbitmq.headers;
+package com.datmt.rabbitmq.exchanges.headers;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
